@@ -14,4 +14,10 @@ app.use(cors());
 //mongodb connection
 connectDB();
 
-app.use("/api/projects", require("."))
+app.use("/api/projects", require("./routes/projectRoutes"));
+app.use("/api/contact", require("./routes/contactRoutes"));
+
+//error handling middleware
+app.use(require("./middleware/errorMiddleware"));
+
+app.listen(PORT, ()=> console.log(`Server running on port ${PORT}`));
